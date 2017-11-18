@@ -101,7 +101,7 @@ void draw()
     }
   
     for (Object obj : universe) {
-      obj.applyForces(100.0);
+      obj.integrate(100.0);
     }
   }
 }
@@ -156,14 +156,14 @@ class Object
     }
   }
   
-  void applyForces(double time)
+  void integrate(double time)
   {
     double ax = fx / kgMass;
     double ay = fy / kgMass;
-    x += vx * time;
-    y += vy * time;
     vx += ax * time;
     vy += ay * time;
+    x += vx * time;
+    y += vy * time;
   }
   
   void draw()
